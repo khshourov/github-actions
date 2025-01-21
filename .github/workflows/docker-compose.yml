@@ -22,15 +22,22 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      # Step 2: Set up Docker Compose
+      - name: Set up Docker Compose
+        uses: docker/setup-buildx-action@v2
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      # Step 3: Build and start services
+      - name: Build and Start Containers
+        run: docker-compose up --build -d
+
+      # Step 4: Run test container
+      - name: Run Tests
+        run: docker-compose run --rm test
+
+      # Step 5: Shut down containers
+      - name: Shut Down Services
+        run: docker-compose down
