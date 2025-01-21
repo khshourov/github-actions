@@ -23,7 +23,7 @@ async function runTests() {
     const getCommentResponse = await axios.get(`${baseURL}/comments/${id}`);
     console.log('Get Comment Response:', getCommentResponse.data);
 
-    if (getCommentResponse.data.comment === 'This is a test comment.') {
+    if (getCommentResponse.data.comment !== 'This is a test comment.') {
       throw new Error('Test 2 failed: Fetched comment does not match');
     }
 
