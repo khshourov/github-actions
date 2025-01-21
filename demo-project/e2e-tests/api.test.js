@@ -30,6 +30,7 @@ async function runTests() {
     console.log('All tests passed successfully!');
   } catch (error) {
     console.error('Test failed:', error.message);
+    process.exit(1);
   }
 }
 
