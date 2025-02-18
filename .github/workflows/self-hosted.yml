@@ -8,7 +8,7 @@ on:
 
 jobs:
   helloworld:
-    runs-on: self-hosted
+    runs-on: test-runner
 
     steps:
       - run: echo "Hello World!"
