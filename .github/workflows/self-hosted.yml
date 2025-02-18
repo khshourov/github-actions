@@ -8,7 +8,7 @@ on:
 
 jobs:
   helloworld:
-    runs-on: ubuntu-shr
+    runs-on: self-hosted
 
     steps:
       - run: echo "Hello World!"
